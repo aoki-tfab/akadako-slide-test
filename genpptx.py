@@ -7,6 +7,8 @@ from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 
 PX = 6350                      # 1920px 幅を 13.333in に対応させる
+PT = 0.5                       # 1px = 0.5pt（1920px = 960pt）
+def P(v): return Pt(v * PT)
 def E(v): return Emu(int(v * PX))
 FONT = "BIZ UDPGothic"
 
@@ -22,7 +24,7 @@ def box(sl, x, y, w, h, fill, line, lw=4, radius=True):
         MSO_SHAPE.ROUNDED_RECTANGLE if radius else MSO_SHAPE.RECTANGLE,
         E(x), E(y), E(w), E(h))
     shp.fill.solid(); shp.fill.fore_color.rgb = C(fill)
-    shp.line.color.rgb = C(line); shp.line.width = Pt(lw)
+    shp.line.color.rgb = C(line); shp.line.width = P(lw)
     shp.text_frame.text = ""
     shp.shadow.inherit = False
     return shp
@@ -38,7 +40,7 @@ def txt(sl, x, y, w, h, s, size=40, bold=False, color="1A1A1A",
         p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
         p.alignment = align
         r = p.add_run(); r.text = line
-        r.font.size = Pt(size); r.font.bold = bold
+        r.font.size = P(size); r.font.bold = bold
         r.font.color.rgb = C(color); r.font.name = FONT
     return tb
 
@@ -52,7 +54,7 @@ def arrow_line(sl, x, y, w, color="3D3D3D", lw=5):
     """線に矢じりを付ける（Canvaで手作りしているのと同じ作り方）"""
     from pptx.enum.shapes import MSO_CONNECTOR
     cn = sl.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, E(x), E(y), E(x + w), E(y))
-    cn.line.color.rgb = C(color); cn.line.width = Pt(lw)
+    cn.line.color.rgb = C(color); cn.line.width = P(lw)
     # 矢じりは python-pptx に API が無いので XML を直接足す
     ln = cn.line._get_or_add_ln()
     from pptx.oxml.ns import qn
