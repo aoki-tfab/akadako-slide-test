@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>整列と余白の検証</title>
+<style>
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{font-family:"BIZ UDPGothic","Yu Gothic",sans-serif;color:#1a1a1a}
+ .page{width:1920px;height:1080px;padding:80px 100px;background:#fff;overflow:hidden}
+ .h2{font-size:46px;font-weight:bold;background:#f2f2f2;border-left:14px solid #888;padding:16px 26px;margin-bottom:36px}
+ .lab{font-size:30px;color:#c0392b;margin:26px 0 10px}
+ .row{display:flex;gap:26px}
+ .bx{border:5px solid #555;border-radius:12px;height:130px;font-size:40px}
+
+ /* A: text-align 頼み（前回ずれた書き方） */
+ .a{flex:1;text-align:center;padding-top:40px}
+ /* B: flex で中央に置く */
+ .b{flex:1;display:flex;align-items:center;justify-content:center}
+ /* C: 枠を文字幅にして、枠ごと中央に並べる */
+ .cwrap{display:flex;justify-content:center;gap:26px}
+ .c{flex:0 0 auto;display:flex;align-items:center;justify-content:center;padding:0 54px}
+
+ /* 左寄せ＋余白 */
+ .l1{flex:1;display:flex;align-items:center;justify-content:flex-start;padding-left:10px}
+ .l2{flex:1;display:flex;align-items:center;justify-content:flex-start;padding-left:40px}
+ .l3{flex:1;display:flex;align-items:center;justify-content:flex-start;padding-left:90px}
+ .l0{flex:1;display:flex;align-items:center;justify-content:flex-start}
+
+ table{border-collapse:collapse;width:100%;font-size:34px;margin-top:16px}
+ th{background:#eee;border:3px solid #999;text-align:left}
+ td{border:3px solid #999}
+ .t0 th,.t0 td{padding:0}
+ .t1 th,.t1 td{padding:16px 28px}
+</style></head><body>
+
+<section class="page" data-document-role="page" data-label="中央揃え3方式"
+ data-speaker-notes="A=text-align頼み（前回ずれた）／B=flexで中央／C=枠を文字幅にして枠ごと中央。">
+ <div class="h2">中央揃え：3つの書き方を比べる</div>
+
+ <div class="lab">A：text-align:center に頼る（前回ずれた書き方）</div>
+ <div class="row">
+   <div class="bx a">① していない</div><div class="bx a">② 1〜2回</div>
+   <div class="bx a">③ 3〜5回</div><div class="bx a">④ 6回以上</div>
+ </div>
+
+ <div class="lab">B：flex（align-items + justify-content）で中央に置く</div>
+ <div class="row">
+   <div class="bx b">① していない</div><div class="bx b">② 1〜2回</div>
+   <div class="bx b">③ 3〜5回</div><div class="bx b">④ 6回以上</div>
+ </div>
+
+ <div class="lab">C：枠を文字幅にして、枠ごと中央に並べる</div>
+ <div class="cwrap">
+   <div class="bx c">① していない</div><div class="bx c">② 1〜2回</div>
+   <div class="bx c">③ 3〜5回</div><div class="bx c">④ 6回以上</div>
+ </div>
+</section>
+
+<section class="page" data-document-role="page" data-label="左寄せの余白"
+ data-speaker-notes="padding-left が 0/10/40/90px でどう入るか。枠に文字がくっつかないかを見る。">
+ <div class="h2">左寄せ：余白（padding-left）が保たれるか</div>
+
+ <div class="lab">padding-left なし（0px）— くっつくはず</div>
+ <div class="row"><div class="bx l0">あいことばを送る</div><div class="bx l0">OK / NG が返る</div></div>
+
+ <div class="lab">padding-left: 10px</div>
+ <div class="row"><div class="bx l1">あいことばを送る</div><div class="bx l1">OK / NG が返る</div></div>
+
+ <div class="lab">padding-left: 40px</div>
+ <div class="row"><div class="bx l2">あいことばを送る</div><div class="bx l2">OK / NG が返る</div></div>
+
+ <div class="lab">padding-left: 90px</div>
+ <div class="row"><div class="bx l3">あいことばを送る</div><div class="bx l3">OK / NG が返る</div></div>
+</section>
+
+<section class="page" data-document-role="page" data-label="表のセル余白"
+ data-speaker-notes="表のセルで padding が保たれるか。罫線に文字がくっつかないか。">
+ <div class="h2">表：セルの余白が保たれるか</div>
+ <div class="lab">padding なし</div>
+ <table class="t0">
+  <tr><th>良いところ</th><th>困るところ</th></tr>
+  <tr><td>ルール変更が1か所で済む</td><td>サーバーが止まると全部止まる</td></tr>
+ </table>
+ <div class="lab">padding: 16px 28px</div>
+ <table class="t1">
+  <tr><th>良いところ</th><th>困るところ</th></tr>
+  <tr><td>ルール変更が1か所で済む</td><td>サーバーが止まると全部止まる</td></tr>
+ </table>
+</section>
+
+</body></html>
