@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>座標で置く書き方</title>
+<style>
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{font-family:"BIZ UDPGothic","Yu Gothic",sans-serif;color:#1a1a1a}
+ .page{width:1920px;height:1080px;position:relative;background:#fff;overflow:hidden}
+ .abs{position:absolute}
+ .h2{font-size:44px;font-weight:bold}
+ .lab{font-size:26px;color:#c0392b}
+ .t38{font-size:38px}
+ .t40{font-size:40px;color:#1f4e79;font-weight:bold}
+</style></head><body>
+
+<section class="page" data-document-role="page" data-label="座標で置く"
+ data-speaker-notes="枠はSVG、文字はabsoluteで座標指定。余白は座標に織り込む。左詰めのまま。">
+
+ <!-- 見出し帯（SVG） -->
+ <svg class="abs" style="left:100px;top:70px" width="1720" height="76" viewBox="0 0 1720 76">
+   <rect x="0" y="0" width="1720" height="76" fill="#f2f2f2"/>
+   <rect x="0" y="0" width="14" height="76" fill="#888"/>
+ </svg>
+ <div class="abs h2" style="left:140px;top:84px">枠はSVG、文字は座標で置く</div>
+
+ <div class="abs lab" style="left:100px;top:190px">A：選択肢（枠＝SVG／文字＝absoluteの左詰め。余白40pxを座標に織り込む）</div>
+ <svg class="abs" style="left:100px;top:230px" width="1720" height="130" viewBox="0 0 1720 130">
+   <rect x="0"    y="0" width="400" height="130" rx="12" fill="#fff" stroke="#555" stroke-width="4"/>
+   <rect x="440"  y="0" width="400" height="130" rx="12" fill="#fff" stroke="#555" stroke-width="4"/>
+   <rect x="880"  y="0" width="400" height="130" rx="12" fill="#fff" stroke="#555" stroke-width="4"/>
+   <rect x="1320" y="0" width="400" height="130" rx="12" fill="#fff" stroke="#555" stroke-width="4"/>
+ </svg>
+ <div class="abs t38" style="left:140px;top:275px">① していない</div>
+ <div class="abs t38" style="left:580px;top:275px">② 1〜2回</div>
+ <div class="abs t38" style="left:1020px;top:275px">③ 3〜5回</div>
+ <div class="abs t38" style="left:1460px;top:275px">④ 6回以上</div>
+
+ <div class="abs lab" style="left:100px;top:400px">B：2行の選択肢（1行ごとに座標を指定する）</div>
+ <svg class="abs" style="left:100px;top:440px" width="1720" height="170" viewBox="0 0 1720 170">
+   <rect x="0"    y="0" width="400" height="170" rx="12" fill="#fff" stroke="#555" stroke-width="4"/>
+   <rect x="440"  y="0" width="400" height="170" rx="12" fill="#fff" stroke="#555" stroke-width="4"/>
+   <rect x="880"  y="0" width="400" height="170" rx="12" fill="#fff" stroke="#555" stroke-width="4"/>
+   <rect x="1320" y="0" width="400" height="170" rx="12" fill="#fff" stroke="#555" stroke-width="4"/>
+ </svg>
+ <div class="abs t38" style="left:140px;top:478px">① ATMの</div>
+ <div class="abs t38" style="left:140px;top:534px">機械の中</div>
+ <div class="abs t38" style="left:580px;top:478px">② キャッシュ</div>
+ <div class="abs t38" style="left:580px;top:534px">カードの中</div>
+ <div class="abs t38" style="left:1020px;top:478px">③ 銀行の</div>
+ <div class="abs t38" style="left:1020px;top:534px">コンピュータ</div>
+ <div class="abs t38" style="left:1460px;top:478px">④ 確かめて</div>
+ <div class="abs t38" style="left:1460px;top:534px">いない</div>
+
+ <div class="abs lab" style="left:100px;top:650px">C：学習目標（枠＝SVG／文字＝座標。左に48px、上に42pxの余白）</div>
+ <svg class="abs" style="left:100px;top:690px" width="1720" height="200" viewBox="0 0 1720 200">
+   <rect x="0" y="0" width="1720" height="200" rx="14" fill="#fff" stroke="#1f4e79" stroke-width="5"/>
+ </svg>
+ <div class="abs t40" style="left:148px;top:732px">認証のしくみを理解し、大切な情報を安全に守る方法を</div>
+ <div class="abs t40" style="left:148px;top:796px">考えられるようになろう。</div>
+
+ <div class="abs lab" style="left:100px;top:930px">D：太い縦線＋文字（線はSVG、文字は座標で40px右へ）</div>
+ <svg class="abs" style="left:100px;top:975px" width="14" height="110" viewBox="0 0 14 110"><rect x="0" y="0" width="14" height="110" fill="#1f4e79"/></svg>
+ <div class="abs t40" style="left:154px;top:980px">認証のしくみを理解し、大切な情報を</div>
+ <div class="abs t40" style="left:154px;top:1030px">安全に守る方法を考えられるようになろう。</div>
+
+</section>
+</body></html>
