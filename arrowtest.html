@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>矢印とグラデーションの代替</title>
+<style>
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{font-family:"BIZ UDPGothic","Yu Gothic",sans-serif;color:#1a1a1a}
+ .page{width:1920px;height:1080px;position:relative;background:#fff;overflow:hidden}
+ .a{position:absolute}
+ .lab{font-size:30px;color:#c0392b}
+</style></head><body>
+
+<section class="page" data-document-role="page" data-label="グラデーションをdivで">
+ <div class="a" style="left:0;top:0;width:1920px;height:1080px;background:linear-gradient(135deg,#1f4e79,#3a7bd5)"></div>
+ <div class="a" style="left:120px;top:300px;font-size:96px;font-weight:bold;color:#fff">divのグラデーション</div>
+ <div class="a" style="left:120px;top:450px;font-size:48px;color:#eaf2fb">これが入れば表紙のSVGを1個減らせる</div>
+</section>
+
+<section class="page" data-document-role="page" data-label="矢印の作り方">
+ <div class="a lab" style="left:60px;top:20px">矢印をSVGなしで作れるか</div>
+
+ <div class="a" style="left:60px;top:110px;font-size:32px">A1 SVGのpolygon</div>
+ <svg class="a" style="left:600px;top:100px" width="300" height="90" viewBox="0 0 300 90"><polygon points="0,25 180,25 180,0 300,45 180,90 180,65 0,65" fill="#3d3d3d"/></svg>
+
+ <div class="a" style="left:60px;top:230px;font-size:32px">A2 文字の →</div>
+ <div class="a" style="left:600px;top:210px;font-size:110px;color:#3d3d3d;line-height:1">→</div>
+
+ <div class="a" style="left:60px;top:390px;font-size:32px">A3 文字の ⇒</div>
+ <div class="a" style="left:600px;top:370px;font-size:110px;color:#3d3d3d;line-height:1">⇒</div>
+
+ <div class="a" style="left:60px;top:550px;font-size:32px">A4 文字の ▶ と棒（色ベタ）</div>
+ <div class="a" style="left:600px;top:585px;width:180px;height:40px;background:#3d3d3d"></div>
+ <div class="a" style="left:760px;top:540px;font-size:110px;color:#3d3d3d;line-height:1">▶</div>
+
+ <div class="a" style="left:60px;top:730px;font-size:32px">A5 divを45度回転させて矢じり</div>
+ <div class="a" style="left:600px;top:765px;width:200px;height:40px;background:#3d3d3d"></div>
+ <div class="a" style="left:780px;top:750px;width:70px;height:70px;background:#3d3d3d;transform:rotate(45deg)"></div>
+
+ <div class="a" style="left:60px;top:890px;font-size:32px">A6 文字の ➡</div>
+ <div class="a" style="left:600px;top:870px;font-size:110px;color:#3d3d3d;line-height:1">➡</div>
+</section>
+
+</body></html>
