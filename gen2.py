@@ -17,17 +17,13 @@ def frame(x, y, w, h, line, fill, r=12, t=4):
     add(f'<div class="a" style="left:{x+t}px;top:{y+t}px;width:{w-t*2}px;height:{h-t*2}px;background:{fill};border-radius:{max(r-3,0)}px"></div>')
 
 def arrow(x, y, w, h, color="#3d3d3d", left=False):
-    """矢印。SVGは取り込みが不安定なので、棒のベタ＋45度回した四角のベタで作る。"""
-    bh = int(h * 0.40)          # 棒の太さ
-    sq = int(h * 0.72)          # 矢じり（45度回す正方形）の一辺
-    cy = y + h // 2
-    bar_w = w - int(sq * 0.55)
-    if left:
-        add(f'<div class="a" style="left:{x}px;top:{cy-sq//2}px;width:{sq}px;height:{sq}px;background:{color};transform:rotate(45deg)"></div>')
-        add(f'<div class="a" style="left:{x+int(sq*0.55)}px;top:{cy-bh//2}px;width:{bar_w}px;height:{bh}px;background:{color}"></div>')
-    else:
-        add(f'<div class="a" style="left:{x}px;top:{cy-bh//2}px;width:{bar_w}px;height:{bh}px;background:{color}"></div>')
-        add(f'<div class="a" style="left:{x+w-sq}px;top:{cy-sq//2}px;width:{sq}px;height:{sq}px;background:{color};transform:rotate(45deg)"></div>')
+    """矢印は「→」1文字のテキストで置く。
+    図形を組み合わせるとCanva上で1本の矢印にならず、動かすと崩れるため。
+    x,y,w,h は矢印を置きたい範囲。その中央に、高さに合わせた大きさで置く。"""
+    f = int(h * 1.4)                       # 字の大きさ
+    gx = x + (w - int(f * 0.72)) // 2      # 字の幅はおよそ 0.72em
+    gy = y + h // 2 - f // 2
+    add(f'<div class="a" style="left:{gx}px;top:{gy}px;font-size:{f}px;color:{color};line-height:1">{"←" if left else "→"}</div>')
 
 def txt(x, y, s, cls="", style=""):
     c = f' class="a {cls}"' if cls else ' class="a"'
