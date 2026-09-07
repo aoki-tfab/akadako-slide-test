@@ -17,12 +17,17 @@ def frame(x, y, w, h, line, fill, r=12, t=4):
     add(f'<div class="a" style="left:{x+t}px;top:{y+t}px;width:{w-t*2}px;height:{h-t*2}px;background:{fill};border-radius:{max(r-3,0)}px"></div>')
 
 def arrow(x, y, w, h, color="#3d3d3d", left=False):
-    hh = h // 2
+    """矢印。SVGは取り込みが不安定なので、棒のベタ＋45度回した四角のベタで作る。"""
+    bh = int(h * 0.40)          # 棒の太さ
+    sq = int(h * 0.72)          # 矢じり（45度回す正方形）の一辺
+    cy = y + h // 2
+    bar_w = w - int(sq * 0.55)
     if left:
-        pts = f'{w},{hh//2} {w//2},{hh//2} {w//2},0 0,{hh} {w//2},{h} {w//2},{h-hh//2} {w},{h-hh//2}'
+        add(f'<div class="a" style="left:{x}px;top:{cy-sq//2}px;width:{sq}px;height:{sq}px;background:{color};transform:rotate(45deg)"></div>')
+        add(f'<div class="a" style="left:{x+int(sq*0.55)}px;top:{cy-bh//2}px;width:{bar_w}px;height:{bh}px;background:{color}"></div>')
     else:
-        pts = f'0,{hh//2} {w//2},{hh//2} {w//2},0 {w},{hh} {w//2},{h} {w//2},{h-hh//2} 0,{h-hh//2}'
-    add(f'<svg class="a" style="left:{x}px;top:{y}px" width="{w}" height="{h}" viewBox="0 0 {w} {h}"><polygon points="{pts}" fill="{color}"/></svg>')
+        add(f'<div class="a" style="left:{x}px;top:{cy-bh//2}px;width:{bar_w}px;height:{bh}px;background:{color}"></div>')
+        add(f'<div class="a" style="left:{x+w-sq}px;top:{cy-sq//2}px;width:{sq}px;height:{sq}px;background:{color};transform:rotate(45deg)"></div>')
 
 def txt(x, y, s, cls="", style=""):
     c = f' class="a {cls}"' if cls else ' class="a"'
@@ -59,7 +64,7 @@ add('''<!doctype html>
 
 # --- p1 表紙 -------------------------------------------------------------
 page("表紙", "単元名はスライド表紙の文言に合わせる。ver表記を忘れない。")
-add('<svg class="a" style="left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1f4e79"/><stop offset="100%" stop-color="#3a7bd5"/></linearGradient></defs><rect width="1920" height="1080" fill="url(#g)"/></svg>')
+add('<div class="a" style="left:0;top:0;width:1920px;height:1080px;background:linear-gradient(135deg,#1f4e79,#3a7bd5)"></div>')
 txt(120, 300, "あいことばで開く", style="font-size:96px;font-weight:bold;color:#fff")
 txt(120, 450, "── 認証のしくみをつくる", style="font-size:64px;font-weight:bold;color:#fff")
 txt(120, 600, "中学技術　情報の技術／AkaDakoシリーズ「__DEV__」", style="font-size:42px;color:#eaf2fb")
