@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>矢印の字を比べる</title>
+<style>
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{font-family:"BIZ UDPGothic","Yu Gothic",sans-serif;color:#1a1a1a}
+ .page{width:1920px;height:1080px;position:relative;background:#fff;overflow:hidden}
+ .a{position:absolute}
+ .n{font-size:30px;color:#c0392b}
+ .g{font-size:130px;color:#3d3d3d;line-height:1}
+</style></head><body>
+
+<section class="page" data-document-role="page" data-label="矢印の字 1">
+ <div class="a n" style="left:60px;top:20px">矢印を1つのテキストで置く（左列＝そのまま／右列＝太字）</div>
+
+ <div class="a n" style="left:60px;top:120px">G1 → U+2192</div>
+ <div class="a g" style="left:420px;top:90px">→</div>
+ <div class="a g" style="left:700px;top:90px;font-weight:bold">→</div>
+
+ <div class="a n" style="left:60px;top:300px">G2 ⟶ U+27F6</div>
+ <div class="a g" style="left:420px;top:270px">⟶</div>
+ <div class="a g" style="left:700px;top:270px;font-weight:bold">⟶</div>
+
+ <div class="a n" style="left:60px;top:480px">G3 ⇒ U+21D2</div>
+ <div class="a g" style="left:420px;top:450px">⇒</div>
+ <div class="a g" style="left:700px;top:450px;font-weight:bold">⇒</div>
+
+ <div class="a n" style="left:60px;top:660px">G4 ➔ U+2794</div>
+ <div class="a g" style="left:420px;top:630px">➔</div>
+ <div class="a g" style="left:700px;top:630px;font-weight:bold">➔</div>
+
+ <div class="a n" style="left:60px;top:840px">G5 ➜ U+279C</div>
+ <div class="a g" style="left:420px;top:810px">➜</div>
+ <div class="a g" style="left:700px;top:810px;font-weight:bold">➜</div>
+
+ <div class="a n" style="left:1050px;top:120px">G6 ⇨ U+21E8</div>
+ <div class="a g" style="left:1420px;top:90px">⇨</div>
+
+ <div class="a n" style="left:1050px;top:300px">G7 ➡ U+27A1</div>
+ <div class="a g" style="left:1420px;top:270px">➡</div>
+
+ <div class="a n" style="left:1050px;top:480px">G8 ▶ U+25B6</div>
+ <div class="a g" style="left:1420px;top:450px">▶</div>
+
+ <div class="a n" style="left:1050px;top:660px">G9 ← 左向き U+2190</div>
+ <div class="a g" style="left:1420px;top:630px">←</div>
+
+ <div class="a n" style="left:1050px;top:840px">G10 ⟵ U+27F5</div>
+ <div class="a g" style="left:1420px;top:810px">⟵</div>
+</section>
+
+<section class="page" data-document-role="page" data-label="実際の並びで見る">
+ <div class="a n" style="left:60px;top:20px">実際の図の並びで比べる（枠は色ベタ2枚）</div>
+
+ <div class="a n" style="left:60px;top:120px">→</div>
+ <div class="a" style="left:200px;top:150px;width:400px;height:130px;background:#444;border-radius:16px"></div>
+ <div class="a" style="left:206px;top:156px;width:388px;height:118px;background:#fafafa;border-radius:13px"></div>
+ <div class="a" style="left:240px;top:195px;font-size:40px;font-weight:bold">示す</div>
+ <div class="a" style="left:640px;top:150px;font-size:130px;color:#3d3d3d;line-height:1">→</div>
+ <div class="a" style="left:820px;top:150px;width:400px;height:130px;background:#d08000;border-radius:16px"></div>
+ <div class="a" style="left:826px;top:156px;width:388px;height:118px;background:#ffe9c7;border-radius:13px"></div>
+ <div class="a" style="left:860px;top:195px;font-size:40px;font-weight:bold;color:#c25e00">確かめる</div>
+
+ <div class="a n" style="left:60px;top:400px">⟶</div>
+ <div class="a" style="left:200px;top:430px;width:400px;height:130px;background:#444;border-radius:16px"></div>
+ <div class="a" style="left:206px;top:436px;width:388px;height:118px;background:#fafafa;border-radius:13px"></div>
+ <div class="a" style="left:240px;top:475px;font-size:40px;font-weight:bold">示す</div>
+ <div class="a" style="left:630px;top:430px;font-size:130px;color:#3d3d3d;line-height:1">⟶</div>
+ <div class="a" style="left:820px;top:430px;width:400px;height:130px;background:#d08000;border-radius:16px"></div>
+ <div class="a" style="left:826px;top:436px;width:388px;height:118px;background:#ffe9c7;border-radius:13px"></div>
+ <div class="a" style="left:860px;top:475px;font-size:40px;font-weight:bold;color:#c25e00">確かめる</div>
+
+ <div class="a n" style="left:60px;top:680px">➡</div>
+ <div class="a" style="left:200px;top:710px;width:400px;height:130px;background:#444;border-radius:16px"></div>
+ <div class="a" style="left:206px;top:716px;width:388px;height:118px;background:#fafafa;border-radius:13px"></div>
+ <div class="a" style="left:240px;top:755px;font-size:40px;font-weight:bold">示す</div>
+ <div class="a" style="left:650px;top:710px;font-size:130px;color:#3d3d3d;line-height:1">➡</div>
+ <div class="a" style="left:820px;top:710px;width:400px;height:130px;background:#d08000;border-radius:16px"></div>
+ <div class="a" style="left:826px;top:716px;width:388px;height:118px;background:#ffe9c7;border-radius:13px"></div>
+ <div class="a" style="left:860px;top:755px;font-size:40px;font-weight:bold;color:#c25e00">確かめる</div>
+
+ <div class="a n" style="left:1350px;top:120px">細い線＋矢じり（棒div＋▶）</div>
+ <div class="a" style="left:1350px;top:230px;width:300px;height:14px;background:#3d3d3d"></div>
+ <div class="a" style="left:1630px;top:186px;font-size:100px;color:#3d3d3d;line-height:1">▶</div>
+
+ <div class="a n" style="left:1350px;top:400px">太い線＋矢じり</div>
+ <div class="a" style="left:1350px;top:500px;width:300px;height:34px;background:#3d3d3d"></div>
+ <div class="a" style="left:1630px;top:466px;font-size:100px;color:#3d3d3d;line-height:1">▶</div>
+</section>
+
+</body></html>
