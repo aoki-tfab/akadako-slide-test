@@ -40,7 +40,8 @@ def arrow(x, y, w, h, color="#3d3d3d", left=False):
     cx = x + w / 2                          # 置きたい中心
     cy = y + h / 2
     gx = int(cx - (lsb + gw / 2) * f)       # 字の左端 = 中心 -（左余白＋幅の半分）
-    gy = int(cy - gcy * f)                  # 字の上端 = 中心 - 中心の高さ
+    # 180度回すと、字の中心が箱の中心を挟んで反対側に移る（箱の高さ＝字の大きさ）
+    gy = int(cy - (1 - gcy if left else gcy) * f)
     st = f'left:{gx}px;top:{gy}px;font-size:{f}px;color:{color};line-height:1'
     if ARROW_BOLD: st += ';font-weight:bold'
     if left:       st += ';transform:rotate(180deg)'
