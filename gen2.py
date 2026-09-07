@@ -16,16 +16,35 @@ def frame(x, y, w, h, line, fill, r=12, t=4):
     add(f'<div class="a" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;background:{line};border-radius:{r}px"></div>')
     add(f'<div class="a" style="left:{x+t}px;top:{y+t}px;width:{w-t*2}px;height:{h-t*2}px;background:{fill};border-radius:{max(r-3,0)}px"></div>')
 
+# 矢印の字の実測値（font-size=F に対する比。2026-09-07 に書き出し画像から測定）
+#   lsb=左の余白 / w=字の幅 / cy=字の中心の高さ
+# かなの中心は 0.584F。cy がこれに近い字は「本文と同じ書体」で出ている。
+ARROW_METRICS = {
+    "→": (0.087, 0.819, 0.591),   # →  本文と同じ書体
+    "⇒": (0.113, 0.781, 0.591),   # ⇒  本文と同じ書体
+    "▶": (0.062, 0.406, 0.591),   # ▶  本文と同じ書体
+    "➜": (0.056, 0.700, 0.628),   # ➜  別の書体（フォールバック）
+    "➡": (0.056, 0.744, 0.628),   # ➡  別の書体（フォールバック）
+}
+ARROW_GLYPH = "→"      # 既定。本文と同じ書体で出る字にすること
+ARROW_BOLD  = True           # 細く見えるので太字にする
+
 def arrow(x, y, w, h, color="#3d3d3d", left=False):
-    """矢印は「➜」1文字のテキストで置く。
+    """矢印は1文字のテキストで置く。
     図形を組み合わせるとCanva上で1本の矢印にならず、動かすと崩れるため。
-    左向きは同じ字を180度回す（U+279C に左向きの字が無いため）。
-    x,y,w,h は矢印を置きたい範囲。その中央に、高さに合わせた大きさで置く。"""
-    f = int(h * 1.4)                       # 字の大きさ
-    gx = x + (w - int(f * 0.72)) // 2      # 字の幅はおよそ 0.72em
-    gy = y + h // 2 - f // 2
-    rot = ";transform:rotate(180deg)" if left else ""
-    add(f'<div class="a" style="left:{gx}px;top:{gy}px;font-size:{f}px;color:{color};line-height:1{rot}">➜</div>')
+    Canvaは line-height を落とすので、字の中心が実測値どおりに来るよう座標を逆算する。
+    x,y,w,h は矢印を置きたい範囲。その中央に置く。"""
+    g = ARROW_GLYPH
+    lsb, gw, gcy = ARROW_METRICS[g]
+    f  = int(h * 1.4)                       # 字の大きさ
+    cx = x + w / 2                          # 置きたい中心
+    cy = y + h / 2
+    gx = int(cx - (lsb + gw / 2) * f)       # 字の左端 = 中心 -（左余白＋幅の半分）
+    gy = int(cy - gcy * f)                  # 字の上端 = 中心 - 中心の高さ
+    st = f'left:{gx}px;top:{gy}px;font-size:{f}px;color:{color};line-height:1'
+    if ARROW_BOLD: st += ';font-weight:bold'
+    if left:       st += ';transform:rotate(180deg)'
+    add(f'<div class="a" style="{st}">{g}</div>')
 
 def txt(x, y, s, cls="", style=""):
     c = f' class="a {cls}"' if cls else ' class="a"'
