@@ -17,13 +17,15 @@ def frame(x, y, w, h, line, fill, r=12, t=4):
     add(f'<div class="a" style="left:{x+t}px;top:{y+t}px;width:{w-t*2}px;height:{h-t*2}px;background:{fill};border-radius:{max(r-3,0)}px"></div>')
 
 def arrow(x, y, w, h, color="#3d3d3d", left=False):
-    """矢印は「→」1文字のテキストで置く。
+    """矢印は「➜」1文字のテキストで置く。
     図形を組み合わせるとCanva上で1本の矢印にならず、動かすと崩れるため。
+    左向きは同じ字を180度回す（U+279C に左向きの字が無いため）。
     x,y,w,h は矢印を置きたい範囲。その中央に、高さに合わせた大きさで置く。"""
     f = int(h * 1.4)                       # 字の大きさ
     gx = x + (w - int(f * 0.72)) // 2      # 字の幅はおよそ 0.72em
     gy = y + h // 2 - f // 2
-    add(f'<div class="a" style="left:{gx}px;top:{gy}px;font-size:{f}px;color:{color};line-height:1">{"←" if left else "→"}</div>')
+    rot = ";transform:rotate(180deg)" if left else ""
+    add(f'<div class="a" style="left:{gx}px;top:{gy}px;font-size:{f}px;color:{color};line-height:1{rot}">➜</div>')
 
 def txt(x, y, s, cls="", style=""):
     c = f' class="a {cls}"' if cls else ' class="a"'
